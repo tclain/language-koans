@@ -1,0 +1,21 @@
+{
+  "name": "elixirscript-js",
+  "version": "0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "highlight.js": "^9.12.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "recompose": "^0.27.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "npx parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
