@@ -1,19 +1,22 @@
-import hljs from 'highlight.js';
-import {} from 'highlight.js/';
+/**
+ * utility function to process koans code
+ */
 
 /** find the number of whitespaces chars to remove in front of the code */
-function commonWhiteSpacesCount(spaces) {
+export function offsetOfWhiteSpacesCount(spaces = []) {
 	return Math.min(...spaces.map((space) => space.length));
 }
 
 /** trim the n first chars for a given line */
-const trimNChars = (charCount) => (lines) => lines.map((line) => line.split('').splice(charCount).join(''));
+export function trimNChars(charCount) {
+	return (lines) => lines.map((line) => line.split('').splice(charCount).join(''));
+}
 
 /**
  * find the starting white spaces character for a given string
  * @param {*} str 
  */
-function findStartingSpaces(str) {
+export function findStartingSpaces(str) {
 	const results = /^([\s ]+)/.exec(str);
 	if (results) {
 		return results[0];
@@ -28,12 +31,6 @@ function findStartingSpaces(str) {
 export function cleanCode(code) {
 	const byLines = code.split('\n').filter((line, index) => line !== '');
 	const spacesBeforeSignificantCode = byLines.map(findStartingSpaces);
-	const charCountToTrim = commonWhiteSpacesCount(spacesBeforeSignificantCode);
+	const charCountToTrim = offsetOfWhiteSpacesCount(spacesBeforeSignificantCode);
 	return trimNChars(charCountToTrim)(byLines);
 }
-
-export function highlightCode(language, code) {
-	return hljs.highlight(language, code).value;
-}
-
-export function codeWithPlaceholder(language, code) {}

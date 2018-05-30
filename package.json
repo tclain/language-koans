@@ -1,8 +1,10 @@
 {
-  "name": "elixirscript-js",
-  "version": "0.1",
+  "name": "webkoans",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
   "dependencies": {
     "highlight.js": "^9.12.0",
     "prop-types": "^15.6.1",
@@ -10,10 +12,14 @@
     "react-dom": "^16.3.2",
     "recompose": "^0.27.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "@types/react": "^16.3.14",
+    "react-scripts": "^1.1.4"
+  },
   "scripts": {
-    "start": "npx parcel index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
   },
   "keywords": [],
   "author": "",

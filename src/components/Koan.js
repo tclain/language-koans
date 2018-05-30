@@ -5,7 +5,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { compose, lifecycle, withHandlers, withState } from 'recompose';
-import { highlightCode } from '../utils/code';
+import { highlightCode } from '../utils/display';
+import { KoanRenderer } from './KoanRenderer';
 
 const STATIC = {
 	ENTER_KEY_CODE: 13
@@ -28,7 +29,7 @@ export const Koan = compose(
 			// update new answers array
 			setUserAnswers(newAnswers);
 		},
-		onEnter: ({ userAnswers, answers, onComplete, answerChecker }) => () => {
+		onEnter: ({ userAnswers, answers, onComplete, answerChecker, setAnswerError }) => () => {
 			// check answers
 			const userIsRight = answers.every((answer, index) => {
 				return answerChecker(userAnswers[index], answer);
@@ -36,7 +37,7 @@ export const Koan = compose(
 			if (userIsRight) {
 				if (onComplete) onComplete();
 			} else {
-				props.setAnswerError(true);
+				setAnswerError(true);
 			}
 		}
 	}),
@@ -59,11 +60,9 @@ export const Koan = compose(
 	})
 )(({ description, onComplete, code, answers, languageMode, userAnswers, answerError }) => (
 	<div className="koan">
-		{JSON.stringify(userAnswers)}
-		{JSON.stringify(answers)}
 		{answerError && <div className="koan__error">Oups, this is not the correct answer</div>}
 		<div className="koan__description">{description}</div>
-		<div className="koan__code" dangerouslySetInnerHTML={{ __html: highlightCode('javascript', code) }} />
+		<KoanRenderer code={code} onPlaceholderChange={(index) => (e) => console.info(index, e)} />
 	</div>
 ));
 
