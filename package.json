@@ -13,15 +13,24 @@
     "recompose": "^0.27.1"
   },
   "devDependencies": {
+    "@types/highlight.js": "^9.12.3",
     "@types/jest": "^22.2.3",
+    "@types/lodash": "^4.14.109",
+    "@types/node": "^10.1.4",
+    "@types/prop-types": "^15.5.3",
     "@types/react": "^16.3.14",
-    "react-scripts": "^1.1.4"
+    "@types/react-dom": "^16.0.5",
+    "@types/recompose": "^0.26.1",
+    "react-scripts-ts": "2.16.0",
+    "typescript": "^2.8.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "test": "react-scripts test --env=jsdom"
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Timothee Clain <timothee.clain@gmail.com",
+  "license": "MIT"
 }
